@@ -2,6 +2,7 @@
  * Photo Controller
  */
 
+ const { validationResult, matchedData } = require('express-validator');
  const models = require('../models');
 
  /**
@@ -38,11 +39,36 @@ const show = async (req, res) => {
  * Store a new resource
  * POST /
  */
-const store = (req, res) => {
-	res.status(405).send({
-		status: 'fail',
-		message: 'Method not allowed.',
-	})
+const store = async (req, res) => {
+	// find the validation errors
+	const errors = validationResult(req);
+	if (!errors.isEmpty()) {
+		res.status(422).send({
+			status: 'fail',
+			data: errors.array(),
+		});
+		return;
+	}
+
+	// extract valid data
+	const validData = matchedData(req);
+
+	// insert valid data into database
+	try {
+		const photo = await models.Photo.forge(validData).save();
+		res.status(200).send({
+			status: 'success',
+			data: photo,
+		});
+
+	} catch (error) {
+		res.status(500).send({
+			status: 'error',
+			message: 'Exception thrown in the database when creating a new photo.'
+		});
+		throw error;
+	}
+
 }
 
 
