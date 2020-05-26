@@ -45,6 +45,7 @@ const store = (req, res) => {
 	})
 }
 
+
 /**
  * Update a specific resource
  * PUT /:photoId
