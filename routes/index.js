@@ -1,14 +1,21 @@
 const express = require('express');
 const router = express.Router();
 
+const auth = require('../controller/middlewares/auth');
+const authController = require('../controller/auth_controller');
+const userValidationRules = require('../validation_rules/user');
+
 /* GET / */
 router.get('/', (req, res) => {
 	res.send({
-		status: 'you had me at hello'
+		status: 'hello from the root'
 	});
 });
 
-router.use('/photos', require('./photos'));
+router.use('/photos', [auth.validateJwtToken],require('./photos'));
 router.use('/albums', require('./albums'));
+
+router.post('/register', [userValidationRules.createRules], authController.register);
+
 
 module.exports = router;
