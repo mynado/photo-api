@@ -22,6 +22,14 @@ const createRules = [
 	body('album_id').optional().trim(),
 ];
 
+const updateRules = [
+	body('title').optional().trim().isLength({ min: 2 }),
+	body('url').optional().trim().isLength({ min: 2 }).isURL(),
+	body('comment').optional().trim(),
+	body('album_id').optional().trim(),
+]
+
 module.exports = {
 	createRules,
+	updateRules,
 }

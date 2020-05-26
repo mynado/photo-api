@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { createRules } = require('../validation_rules/photo')
+const { createRules, updateRules } = require('../validation_rules/photo')
 const photoController = require('../controller/photo_controller');
 
 /* Get all resources */
@@ -13,7 +13,7 @@ router.get('/:photoId', photoController.show);
 router.post('/', createRules, photoController.store);
 
 /* Update a specific resource */
-router.put('/:photoId', photoController.update);
+router.put('/:photoId', updateRules, photoController.update);
 
 /* Destroy a specific resource */
 router.delete('/:photoId', photoController.destroy);
