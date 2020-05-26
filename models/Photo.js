@@ -7,6 +7,6 @@ module.exports = (bookshelf) => {
 		tableName: 'photos',
 		album() {
 			return this.belongsTo('Album');
-		}
+		},
 	});
 }
