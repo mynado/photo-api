@@ -10,18 +10,6 @@
   * GET /
   */
 const index = async (req, res) => {
-	/*
-	const photos = await models.Photo.fetchById(req.user.data.id, { withRelated: ['album'] }).fetchAll();
-
-	res.status(200).send({
-		status: 'success',
-		data: {
-			photos,
-		}
-	});
-	*/
-
-
 	let photos = null;
 
 	try {
@@ -38,19 +26,6 @@ const index = async (req, res) => {
 			photos,
 		}
 	});
-
-	/*
-	// med kopplingstabell photos_user
-	let user = null;
-	try {
-		user = await models.User.fetchById(req.user.data.id, { withRelated: 'photos' });
-	} catch (error) {
-		res.sendStatus(404);
-		return;
-	}
-
-	const photos = user.related('photos');
-*/
 }
 
 /**
@@ -59,8 +34,6 @@ const index = async (req, res) => {
  */
 const show = async (req, res) => {
 	const photo = await new models.Photo({ id: req.params.photoId }).fetch({ withRelated: 'album' });
-
-	// const photo = await new models.Photo({ id: req.params.photoId }).fetch({ withRelated: 'album' });
 
 	res.status(200).send({
 		status: 'success',
@@ -76,6 +49,7 @@ const show = async (req, res) => {
  */
 const store = async (req, res) => {
 	const userId = req.user.data.id;
+	console.log(req)
 	// find the validation errors
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {

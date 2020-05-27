@@ -1,3 +1,7 @@
+/**
+ * Photos Route
+ */
+
 const express = require('express');
 const router = express.Router();
 const { createRules, updateRules } = require('../validation_rules/photo')

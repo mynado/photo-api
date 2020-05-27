@@ -19,8 +19,6 @@ const createRules = [
 	}),
 	body('url').trim().isLength({ min: 3 }).isURL(),
 	body('comment').optional(),
-	body('album_id').optional().trim(),
-	//body('user_id').optional().trim(),
 ];
 
 const updateRules = [

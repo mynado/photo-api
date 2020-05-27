@@ -2,6 +2,7 @@
  * Album Controller
  */
 
+const { validationResult, matchedData } = require('express-validator');
 const models = require('../models');
 
  /**
@@ -9,6 +10,7 @@ const models = require('../models');
   * GET /
   */
 const index = async (req, res) => {
+	console.log(req)
 	const allAlbums = await new models.Album({}).fetchAll();
 
 	res.status(200).send({
@@ -24,51 +26,114 @@ const index = async (req, res) => {
  * GET /:albumId
  */
 const show = async (req, res) => {
-	const album = await new models.Album({ id: req.params.albumId }).fetch({ withRelated: ['photos'] });
+	// query db for album and load the photos relation
+	let album = null;
+	try {
+		album = await models.Album.fetchById(req.params.albumId, { withRelated: 'photos' });
+	} catch (error) {
+		console.error(error);
+		res.sendStatus(404);
+		return;
+	}
 
-	res.status(200).send({
+	// query db for books this user has
+	const photos = album.related('photos');
+
+	res.send({
 		status: 'success',
 		data: {
-			album,
-		}
-	})
+			photos,
+		},
+	});
+
+	// const album = await new models.Album({id: req.params.albumId}).fetch({ withRelated: ['photos'] });
+
+	// res.status(200).send({
+	// 	status: 'success',
+	// 	data: {
+	// 		album,
+	// 	}
+	// })
 }
 
 /**
  * Store a new resource
  * POST /
  */
-// const store = async (req, res) => {
-// 	// find the validation errors
-// 	const errors = validationResult(req);
-// 	if (!errors.isEmpty()) {
-// 		res.status(422).send({
-// 			status: 'fail',
-// 			data: errors.array(),
-// 		});
-// 		return;
-// 	}
+const store = async (req, res) => {
+	const userId = req.user.data.id;
+	// find the validation errors
+	const errors = validationResult(req);
+	if (!errors.isEmpty()) {
+		res.status(422).send({
+			status: 'fail',
+			data: errors.array(),
+		});
+		return;
+	}
 
-// 	// extract valid data
-// 	const validData = matchedData(req);
+	// extract valid data
+	let validData = matchedData(req);
+	validData = {
+		...validData,
+		user_id: String(userId),
+	}
 
-// 	// insert valid data into database
-// 	try {
-// 		const photo = await models.Photo.forge(validData).save();
-// 		res.status(200).send({
-// 			status: 'success',
-// 			data: photo,
-// 		});
+	// insert valid data into database
+	try {
+		const album = await models.Album.forge(validData).save();
+		res.status(200).send({
+			status: 'success',
+			data: album,
+		});
 
-// 	} catch (error) {
-// 		res.status(500).send({
-// 			status: 'error',
-// 			data: 'Exception thrown in the database when creating a new photo.'
-// 		});
-// 		throw error;
-// 	}
+	} catch (error) {
+		res.status(500).send({
+			status: 'error',
+			data: 'Exception thrown in the database when creating a new album.'
+		});
+		throw error;
+	}
 
-// }
+}
+
+/**
+ * Add a photo to album
+ */
+
+const addPhoto = async (req, res) => {
+	const errors = validationResult(req);
+	if (!errors.isEmpty()) {
+		// fail
+		res.status(422).send({
+			status: 'fail',
+			data: errors.array(),
+		})
+		return;
+	}
+
+	try {
+		// get photo and album to attach
+		const photo = await models.Photo.fetchById(req.body.photo_id);
+
+		const album = await models.Album.fetchById(req.body.album_id);
+
+		// attach photo to album
+		const result = await photo.album().attach(album);
+
+		console.log(result);
+		res.status(201).send({
+			status: 'success',
+			data: result,
+		});
+	} catch (error) {
+		res.status(500).send({
+			status: 'error',
+			message: 'Exception thrown when trying to add photo to album.'
+		});
+		throw error;
+	}
+}
 
 
 /**
@@ -145,7 +210,8 @@ const show = async (req, res) => {
 module.exports = {
 	index,
 	show,
-	// store,
+	store,
+	addPhoto,
 	// update,
 	// destroy,
 }

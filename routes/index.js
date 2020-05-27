@@ -13,7 +13,7 @@ router.get('/', (req, res) => {
 });
 
 router.use('/photos', [auth.validateJwtToken],require('./photos'));
-router.use('/albums', require('./albums'));
+router.use('/albums', [auth.validateJwtToken], require('./albums'));
 
 router.post('/register', [userValidationRules.createRules], authController.register);
 
