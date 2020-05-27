@@ -116,7 +116,8 @@ const addPhoto = async (req, res) => {
 		// get photo and album to attach
 		const photo = await models.Photo.fetchById(req.body.photo_id);
 
-		const album = await models.Album.fetchById(req.body.album_id);
+		const album = await models.Album.fetchById(req.params.albumId);
+		console.log(album)
 
 		// attach photo to album
 		const result = await photo.album().attach(album);

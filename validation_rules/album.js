@@ -21,7 +21,7 @@ const createRules = [
 
 const addPhotosRules = [
 	body('photo_id').trim().isLength({ min: 1 }),
-	body('album_id').trim().isLength({ min: 1 }),
+	//body('album_id').trim().isLength({ min: 1 }),
 ];
 
 module.exports = {
