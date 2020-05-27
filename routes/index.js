@@ -17,5 +17,8 @@ router.use('/albums', require('./albums'));
 
 router.post('/register', [userValidationRules.createRules], authController.register);
 
+// login and get JWT access token
+router.post('/login', authController.login);
+
 
 module.exports = router;
