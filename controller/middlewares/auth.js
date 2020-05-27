@@ -19,7 +19,7 @@ const validateJwtToken = (req, res, next) => {
 	let payload = null;
 
 	try {
-		payload = jwt.verify(token, process.send.ACCESS_TOKEN_SECRET);
+		payload = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
 	} catch (error) {
 		res.status(403).send({
 			status: 'fail',

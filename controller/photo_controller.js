@@ -10,14 +10,47 @@
   * GET /
   */
 const index = async (req, res) => {
-	const allPhotos = await models.Photo.fetchAll();
+	/*
+	const photos = await models.Photo.fetchById(req.user.data.id, { withRelated: ['album'] }).fetchAll();
 
 	res.status(200).send({
 		status: 'success',
 		data: {
-			photo: allPhotos,
+			photos,
 		}
 	});
+	*/
+
+
+	let photos = null;
+
+	try {
+		photos = await models.Photo.where("user_id", req.user.data.id).fetchAll();
+	} catch (error) {
+		res.sendStatus(404);
+		return;
+	}
+
+
+	res.status(200).send({
+		status: 'success',
+		data: {
+			photos,
+		}
+	});
+
+	/*
+	// med kopplingstabell photos_user
+	let user = null;
+	try {
+		user = await models.User.fetchById(req.user.data.id, { withRelated: 'photos' });
+	} catch (error) {
+		res.sendStatus(404);
+		return;
+	}
+
+	const photos = user.related('photos');
+*/
 }
 
 /**
@@ -26,6 +59,8 @@ const index = async (req, res) => {
  */
 const show = async (req, res) => {
 	const photo = await new models.Photo({ id: req.params.photoId }).fetch({ withRelated: 'album' });
+
+	// const photo = await new models.Photo({ id: req.params.photoId }).fetch({ withRelated: 'album' });
 
 	res.status(200).send({
 		status: 'success',
@@ -40,6 +75,7 @@ const show = async (req, res) => {
  * POST /
  */
 const store = async (req, res) => {
+	const userId = req.user.data.id;
 	// find the validation errors
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
@@ -51,14 +87,21 @@ const store = async (req, res) => {
 	}
 
 	// extract valid data
-	const validData = matchedData(req);
+	let validData = matchedData(req);
+	validData = {
+		...validData,
+		user_id: String(userId),
+	}
 
 	// insert valid data into database
 	try {
 		const photo = await models.Photo.forge(validData).save();
 		res.status(200).send({
 			status: 'success',
-			data: photo,
+			data: {
+				photo,
+			}
+
 		});
 
 	} catch (error) {
