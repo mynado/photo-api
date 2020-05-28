@@ -36,7 +36,7 @@ const show = async (req, res) => {
 		return;
 	}
 
-	// query db for books this user has
+	// query db for photos this user has
 	const photos = album.related('photos');
 
 	res.send({
@@ -82,7 +82,7 @@ const store = async (req, res) => {
 	// insert valid data into database
 	try {
 		const album = await models.Album.forge(validData).save();
-		res.status(200).send({
+		res.status(201).send({
 			status: 'success',
 			data: album,
 		});
@@ -145,10 +145,50 @@ const addPhoto = async (req, res) => {
  * PUT /:albumId
  */
 const update = async (req, res) => {
+// get album
+const album = await new models.Album({ id: req.params.albumId, user_id: req.user.data.id }).fetch({ require: false });
+
+// check if album exists
+if (!album) {
 	res.status(404).send({
+		status: 'fail',
+		data: 'Album not found',
+	});
+	return;
+}
+
+// find the validation errors
+const errors = validationResult(req);
+if (!errors.isEmpty()) {
+	// fail
+	res.status(422).send({
+		status: 'fail',
+		data: errors.array(),
+	});
+	return;
+}
+
+// extract valid data
+const validData = matchedData(req);
+console.log(validData)
+
+try {
+	// update valid data into specific user
+	const updatedAlbum = await album.save(validData);
+
+	res.status(200).send({
+		status: 'success',
+		data: {
+			photo: updatedAlbum,
+		},
+	});
+
+} catch (error) {
+	res.status(500).send({
 		status: 'error',
-		data: 'Not implemented yet.'
+		data: 'Exception thrown in database when updating a specific photo.'
 	})
+}
 }
 
 /**

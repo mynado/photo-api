@@ -4,7 +4,7 @@
 
 const express = require('express');
 const router = express.Router();
-const { createRules, addPhotosRules } = require('../validation_rules/album')
+const { createRules, addPhotosRules, updateRules } = require('../validation_rules/album')
 const albumController = require('../controller/album_controller');
 
 
@@ -21,7 +21,7 @@ router.post('/', createRules, albumController.store);
 router.post('/:albumId/photos', addPhotosRules, albumController.addPhoto);
 
 /* Update an album */
-router.put('/:albumId', albumController.update);
+router.put('/:albumId', updateRules, albumController.update);
 
 /* Remove a photo from a specific album */
 router.delete('/:albumId/photo/:photoId', albumController.removePhoto);

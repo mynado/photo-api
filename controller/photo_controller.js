@@ -95,7 +95,6 @@ const store = async (req, res) => {
 
 }
 
-
 /**
  * Update a specific resource
  * PUT /:photoId
@@ -173,7 +172,7 @@ const destroy = async (req, res) => {
 		res.status(200).send({
 			status: 'success',
 			data: 'Photo is deleted',
-		})
+		});
 	} catch {
 		res.status(500).send({
 			status: 'error',
