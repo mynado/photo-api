@@ -6,9 +6,10 @@ const { body } = require('express-validator');
 const models = require('../models');
 
 const createRules = [
-	body('title').trim().isLength({ min: 2 }).custom(async value => {
+	body('title').trim().isLength({ min: 2 }).custom(async (value, {req}) => {
 		const album = await new models.Album({
 			title: value,
+			user_id: req.user.data.id,
 		}).fetch({
 			require: false,
 		});
