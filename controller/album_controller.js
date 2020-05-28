@@ -115,17 +115,19 @@ const addPhoto = async (req, res) => {
 	try {
 		// get photo and album to attach
 		const photo = await models.Photo.fetchById(req.body.photo_id);
+		console.log(photo)
 
 		const album = await models.Album.fetchById(req.params.albumId);
-		console.log(album)
 
 		// attach photo to album
-		const result = await photo.album().attach(album);
+		const result = await album.photos().attach(photo);
 
 		console.log(result);
 		res.status(201).send({
 			status: 'success',
-			data: result,
+			data: [
+				...result,
+			]
 		});
 	} catch (error) {
 		res.status(500).send({

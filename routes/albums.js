@@ -17,7 +17,8 @@ router.get('/:albumId', albumController.show);
 /* Store a new resource */
 router.post('/', createRules, albumController.store);
 
-router.post('/:albumId', addPhotosRules, albumController.addPhoto);
+/* Store an existing resource in a specific resource */
+router.post('/:albumId/photos', addPhotosRules, albumController.addPhoto);
 
 // /* Update a specific resource */
 // router.put('/:photoId', updateRules, photoController.update);
