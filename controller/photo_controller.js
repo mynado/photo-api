@@ -151,7 +151,10 @@ const update = async (req, res) => {
  */
 const destroy = async (req, res) => {
 	// get photo
-	const photo = await new models.Photo({ id: req.params.photoId, user_id: req.user.data.id }).fetch({ withRelated: 'albums' });
+	const photo = await new models.Photo({
+			id: req.params.photoId,
+			user_id: req.user.data.id,
+		}).fetch({ withRelated: 'albums' });
 
 	// check if photo exists
 	if (!photo) {

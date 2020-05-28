@@ -16,7 +16,7 @@ const index = async (req, res) => {
 	res.status(200).send({
 		status: 'success',
 		data: {
-			photo: allAlbums,
+			albums: allAlbums,
 		}
 	});
 }
@@ -45,15 +45,6 @@ const show = async (req, res) => {
 			photos,
 		},
 	});
-
-	// const album = await new models.Album({id: req.params.albumId}).fetch({ withRelated: ['photos'] });
-
-	// res.status(200).send({
-	// 	status: 'success',
-	// 	data: {
-	// 		album,
-	// 	}
-	// })
 }
 
 /**
@@ -103,6 +94,7 @@ const store = async (req, res) => {
  */
 
 const addPhoto = async (req, res) => {
+
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
 		// fail
@@ -232,11 +224,9 @@ const removePhoto = async (req, res) => {
 	} catch {
 		res.status(500).send({
 			status: 'error',
-			data: 'Exception thrown in database when deleting photo.',
+			data: 'Exception thrown in database when deleting photo from album.',
 		})
 	}
-
-
 }
 
 /**
@@ -244,11 +234,36 @@ const removePhoto = async (req, res) => {
  * DELETE /:albumId
  */
 const destroy = async (req, res) => {
-	res.status(404).send({
-		status: 'error',
-		data: 'Not implemented yet.'
-	})
+	// get album
+	const album = await new models.Album({
+			id: req.params.albumId,
+			user_id: req.user.data.id,
+		}).fetch({ withRelated: 'photos' });
 
+	// check if album exists
+	if (!album) {
+		res.status(404).send({
+			status: 'fail',
+			data: 'Album not found',
+		});
+		return;
+	}
+
+	try {
+		// delete album and all its' relations
+		album.destroy().then();
+		album.photos().detach();
+
+		res.status(200).send({
+			status: 'success',
+			data: 'Album is deleted',
+		})
+	} catch {
+		res.status(500).send({
+			status: 'error',
+			data: 'Exception thrown in database when deleting an album.',
+		})
+	}
 }
 
 module.exports = {
