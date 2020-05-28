@@ -156,10 +156,46 @@ const update = async (req, res) => {
  * DELETE /:albumId/photos/:photoId
  */
 const removePhoto = async (req, res) => {
-	res.status(404).send({
-		status: 'error',
-		data: 'Not implemented yet.'
-	})
+	// get photo
+	const photo = await new models.Photo({ id: req.params.photoId, user_id: req.user.data.id }).fetch({ require: false });
+	console.log('Photo:', photo)
+
+	// check if photo exists
+	if (!photo) {
+		res.status(404).send({
+			status: 'fail',
+			data: 'Photo not found',
+		});
+		return;
+	}
+
+	// get album
+	const album = await new models.Album({ id: req.params.albumId }).fetch({ withRelated: 'photos' });
+
+	// check if album exists
+	if (!album) {
+		res.status(404).send({
+			status: 'fail',
+			data: 'Album not found',
+		});
+		return;
+	}
+
+	try {
+		// delete photo from album
+		album.photos().detach(photo);
+
+		res.status(200).send({
+			status: 'success',
+			data: 'Photo is deleted',
+		})
+	} catch {
+		res.status(500).send({
+			status: 'error',
+			data: 'Exception thrown in database when deleting photo.',
+		})
+	}
+
 
 }
 
