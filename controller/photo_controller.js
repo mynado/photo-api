@@ -77,7 +77,7 @@ const store = async (req, res) => {
 	// insert valid data into database
 	try {
 		const photo = await models.Photo.forge(validData).save();
-		res.status(200).send({
+		res.status(201).send({
 			status: 'success',
 			data: {
 				photo,
@@ -152,13 +152,7 @@ const update = async (req, res) => {
  */
 const destroy = async (req, res) => {
 	// get photo
-	const photo = await new models.Photo({ id: req.params.photoId, user_id: req.user.data.id }).fetch({ require: false });
-	console.log('Photo:', photo)
-
-	// get album
-	// const album = await new models.Album({ id: req.body.album_id }).fetch({ withRelated: 'photos' });
-
-	const album = await new models.Album().fetch({ withRelated: 'photos' });
+	const photo = await new models.Photo({ id: req.params.photoId, user_id: req.user.data.id }).fetch({ withRelated: 'albums' });
 
 	// check if photo exists
 	if (!photo) {
@@ -173,8 +167,8 @@ const destroy = async (req, res) => {
 		// delete photo from database
 		photo.destroy().then();
 
-		// delete photos from pivot table
-		album.photos().detach(photo);
+		// detach photos from all albums
+		photo.albums().detach();
 
 		res.status(200).send({
 			status: 'success',
