@@ -19,7 +19,6 @@ const index = async (req, res) => {
 		return;
 	}
 
-
 	res.status(200).send({
 		status: 'success',
 		data: {
@@ -33,14 +32,22 @@ const index = async (req, res) => {
  * GET /:photoId
  */
 const show = async (req, res) => {
-	const photo = await new models.Photo({ id: req.params.photoId }).fetch({ withRelated: 'album' });
+
+	let photo = null;
+
+	try {
+		photo = await new models.Photo({id: req.params.photoId, user_id: req.user.data.id}).fetch();
+	} catch (error) {
+		res.sendStatus(404);
+		return;
+	}
 
 	res.status(200).send({
 		status: 'success',
 		data: {
 			photo,
 		}
-	})
+	});
 }
 
 /**
@@ -96,7 +103,7 @@ const store = async (req, res) => {
 const update = async (req, res) => {
 
 	// get photo
-	const photo = await new models.Photo({ id: req.params.photoId }).fetch({ require: false });
+	const photo = await new models.Photo({ id: req.params.photoId, user_id: req.user.data.id }).fetch({ require: false });
 
 	// check if photo exists
 	if (!photo) {
@@ -144,8 +151,30 @@ const update = async (req, res) => {
  * DELETE /:photoId
  */
 const destroy = async (req, res) => {
+	// get photo
+	const photo = await new models.Photo({ id: req.params.photoId, user_id: req.user.data.id }).fetch({ require: false });
+	console.log('Photo:', photo)
+
+	// get album
+	// const album = await new models.Album({ id: req.body.album_id }).fetch({ withRelated: 'photos' });
+
+	const album = await new models.Album().fetch({ withRelated: 'photos' });
+
+	// check if photo exists
+	if (!photo) {
+		res.status(404).send({
+			status: 'fail',
+			data: 'Photo not found',
+		});
+		return;
+	}
+
 	try {
-		await new models.Photo({id: req.params.photoId}).destroy().then();
+		// delete photo from database
+		photo.destroy().then();
+
+		// delete photos from pivot table
+		album.photos().detach(photo);
 
 		res.status(200).send({
 			status: 'success',

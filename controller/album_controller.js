@@ -11,7 +11,7 @@ const models = require('../models');
   */
 const index = async (req, res) => {
 	console.log(req)
-	const allAlbums = await new models.Album({}).fetchAll();
+	const allAlbums = await models.Album.where("user_id", req.user.data.id).fetchAll();
 
 	res.status(200).send({
 		status: 'success',
@@ -99,6 +99,7 @@ const store = async (req, res) => {
 
 /**
  * Add a photo to album
+ * POST /:albumId/photos
  */
 
 const addPhoto = async (req, res) => {
@@ -141,80 +142,45 @@ const addPhoto = async (req, res) => {
 
 /**
  * Update a specific resource
- * PUT /:photoId
+ * PUT /:albumId
  */
-// const update = async (req, res) => {
+const update = async (req, res) => {
+	res.status(404).send({
+		status: 'error',
+		data: 'Not implemented yet.'
+	})
+}
 
-// 	// get photo
-// 	const photo = await new models.Photo({ id: req.params.photoId }).fetch({ require: false });
+/**
+ * Destroy a specific resource from a specific resource
+ * DELETE /:albumId/photos/:photoId
+ */
+const removePhoto = async (req, res) => {
+	res.status(404).send({
+		status: 'error',
+		data: 'Not implemented yet.'
+	})
 
-// 	// check if photo exists
-// 	if (!photo) {
-// 		res.status(404).send({
-// 			status: 'fail',
-// 			data: 'Photo not found',
-// 		});
-// 		return;
-// 	}
-
-// 	// find the validation errors
-// 	const errors = validationResult(req);
-// 	if (!errors.isEmpty()) {
-// 		// fail
-// 		res.status(422).send({
-// 			status: 'fail',
-// 			data: errors.array(),
-// 		});
-// 		return;
-// 	}
-
-// 	// extract valid data
-// 	const validData = matchedData(req);
-// 	try {
-// 		// update valid data into specific user
-// 		const updatedPhoto = await photo.save(validData);
-
-// 		res.status(200).send({
-// 			status: 'success',
-// 			data: {
-// 				photo: updatedPhoto,
-// 			},
-// 		});
-
-// 	} catch (error) {
-// 		res.status(500).send({
-// 			status: 'error',
-// 			data: 'Exception thrown in database when updating a specific photo.'
-// 		})
-// 	}
-// }
+}
 
 /**
  * Destroy a specific resource
- * DELETE /:photoId
+ * DELETE /:albumId
  */
-// const destroy = async (req, res) => {
-// 	try {
-// 		await new models.Photo({id: req.params.photoId}).destroy().then();
+const destroy = async (req, res) => {
+	res.status(404).send({
+		status: 'error',
+		data: 'Not implemented yet.'
+	})
 
-// 		res.status(200).send({
-// 			status: 'success',
-// 			data: 'Photo is deleted',
-// 		})
-// 	} catch {
-// 		res.status(500).send({
-// 			status: 'error',
-// 			data: 'Exception thrown in database when deleting photo.',
-// 		})
-// 	}
-
-// }
+}
 
 module.exports = {
 	index,
 	show,
 	store,
 	addPhoto,
-	// update,
-	// destroy,
+	update,
+	removePhoto,
+	destroy,
 }

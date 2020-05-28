@@ -20,10 +20,13 @@ router.post('/', createRules, albumController.store);
 /* Store an existing resource in a specific resource */
 router.post('/:albumId/photos', addPhotosRules, albumController.addPhoto);
 
-// /* Update a specific resource */
-// router.put('/:photoId', updateRules, photoController.update);
+/* Update an album */
+router.put('/:albumId', albumController.update);
 
-// /* Destroy a specific resource */
-// router.delete('/:photoId', photoController.destroy);
+/* Remove a photo from a specific album */
+router.delete('/:albumId/photo/:photoId', albumController.removePhoto);
+
+/* Destroy an album */
+router.delete('/:albumId', albumController.destroy);
 
 module.exports = router;
