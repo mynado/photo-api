@@ -32,7 +32,7 @@ const addPhotosRules = [
 			const photo = await models.Photo.fetchById(values[i]);
 
 			if (!photo) {
-				return Promise.reject(`Category ${values[i]} does not exist.`)
+				return Promise.reject(`Photo with ID ${values[i]} does not exist.`)
 			}
 		}
 	}),
