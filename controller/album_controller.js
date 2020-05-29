@@ -92,9 +92,8 @@ const store = async (req, res) => {
  * POST /:albumId/photos
  */
 const addPhoto = async (req, res) => {
-
 	const errors = validationResult(req);
-
+	console.log(errors)
 	if (!errors.isEmpty()) {
 		// fail
 		res.status(422).send({
@@ -104,6 +103,7 @@ const addPhoto = async (req, res) => {
 		return;
 	}
 
+
 	// extract valid data
 	const validData = matchedData(req);
 
@@ -111,17 +111,22 @@ const addPhoto = async (req, res) => {
 	let photosIds = false;
 	if (validData.photos_ids) {
 		photosIds = validData.photos_ids;
-		delete validData.photos_ids;
 	}
-	console.log(photosIds)
+
 	try {
-		// get album to attach
+
 		const album = await models.Album.fetchById(req.params.albumId);
 
+		if (album.attributes.user_id !== req.user.data.id) {
+			res.status(404).send({
+				status: 'fail',
+				data: `The album with id ${req.params.albumId} does not exist.`
+			})
+			return;
+		}
 		// attach photo to album
 		const result = await album.photos().attach(photosIds);
 
-		console.log(result);
 		res.status(201).send({
 			status: 'success',
 			data: [
