@@ -154,7 +154,10 @@ const destroy = async (req, res) => {
 	const photo = await new models.Photo({
 			id: req.params.photoId,
 			user_id: req.user.data.id,
-		}).fetch({ withRelated: 'albums' });
+		}).fetch({
+			withRelated: 'albums',
+			require: false
+		});
 
 	// check if photo exists
 	if (!photo) {
@@ -169,7 +172,7 @@ const destroy = async (req, res) => {
 		// delete photo from database
 		photo.destroy().then();
 
-		// detach photos from all albums
+		// detach photo from all albums
 		photo.albums().detach();
 
 		res.status(200).send({

@@ -243,7 +243,10 @@ const destroy = async (req, res) => {
 	const album = await new models.Album({
 			id: req.params.albumId,
 			user_id: req.user.data.id,
-		}).fetch({ withRelated: 'photos' });
+		}).fetch({
+			withRelated: 'photos',
+			require: false,
+		});
 
 	// check if album exists
 	if (!album) {
