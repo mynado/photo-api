@@ -13,7 +13,7 @@ const { User } = require('../models')
  */
 const register = async (req, res) => {
 	const errors = validationResult(req);
-	console.log(validationResult(req))
+
 	if (!errors.isEmpty()) {
 		res.status(422).send({
 			status: 'fail',
@@ -29,22 +29,22 @@ const register = async (req, res) => {
 	} catch (error) {
 		res.status(500).send({
 			status: 'error',
-			data: 'Exception thrown when hashing the password.'
+			message: 'Exception thrown when hashing the password.'
 		});
 		throw error;
 	}
 
 	try {
-		const user = await User.forge(validData).save();
+		await User.forge(validData).save();
 		res.status(201).send({
 			status: 'success',
-			data: 'User registred',
+			message: 'User registred',
 		});
 
 	} catch (error) {
 		res.status(500).send({
 			status: 'error',
-			data: 'Exception thrown when creating a new user.'
+			message: 'Exception thrown when creating a new user.'
 		});
 		throw error;
 	}
@@ -61,7 +61,7 @@ const login = async (req, res) => {
 	if (!user) {
 		res.status(401).send({
 			status: 'Fail',
-			data: 'Authentication required',
+			message: 'Authentication required',
 		});
 		return;
 	}

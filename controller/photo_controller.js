@@ -2,8 +2,8 @@
  * Photo Controller
  */
 
- const { validationResult, matchedData } = require('express-validator');
- const models = require('../models');
+const { validationResult, matchedData } = require('express-validator');
+const models = require('../models');
 
  /**
   * Get all resources
@@ -56,7 +56,7 @@ const show = async (req, res) => {
  */
 const store = async (req, res) => {
 	const userId = req.user.data.id;
-	console.log(req)
+
 	// find the validation errors
 	const errors = validationResult(req);
 	if (!errors.isEmpty()) {
@@ -88,11 +88,10 @@ const store = async (req, res) => {
 	} catch (error) {
 		res.status(500).send({
 			status: 'error',
-			data: 'Exception thrown in the database when creating a new photo.'
+			message: 'Exception thrown in the database when creating a new photo.'
 		});
 		throw error;
 	}
-
 }
 
 /**
@@ -108,7 +107,7 @@ const update = async (req, res) => {
 	if (!photo) {
 		res.status(404).send({
 			status: 'fail',
-			data: 'Photo not found',
+			message: `The photo with id ${req.params.photoId} does not exist.`,
 		});
 		return;
 	}
@@ -140,7 +139,7 @@ const update = async (req, res) => {
 	} catch (error) {
 		res.status(500).send({
 			status: 'error',
-			data: 'Exception thrown in database when updating a specific photo.'
+			message: 'Exception thrown in database when updating a specific photo.'
 		})
 	}
 }
@@ -163,7 +162,7 @@ const destroy = async (req, res) => {
 	if (!photo) {
 		res.status(404).send({
 			status: 'fail',
-			data: 'Photo not found',
+			message: `The photo with id ${req.params.photoId} does not exist.`,
 		});
 		return;
 	}
@@ -177,12 +176,12 @@ const destroy = async (req, res) => {
 
 		res.status(200).send({
 			status: 'success',
-			data: 'Photo is deleted',
+			message: `The photo with id ${req.params.photoId} is deleted.`,
 		});
 	} catch {
 		res.status(500).send({
 			status: 'error',
-			data: 'Exception thrown in database when deleting photo.',
+			message: 'Exception thrown in database when deleting photo.',
 		})
 	}
 

@@ -10,7 +10,7 @@ const validateJwtToken = (req, res, next) => {
 	if (!token) {
 		res.status(401).send({
 			status: 'fail',
-			data: 'No token found in request headers.',
+			message: 'No token found in request headers.',
 		});
 		return;
 	}
@@ -23,7 +23,7 @@ const validateJwtToken = (req, res, next) => {
 	} catch (error) {
 		res.status(403).send({
 			status: 'fail',
-			data: 'Authentication failed.',
+			message: 'Authentication failed.',
 		});
 		throw error;
 	}

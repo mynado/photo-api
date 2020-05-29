@@ -20,5 +20,4 @@ router.post('/register', [userValidationRules.createRules], authController.regis
 // login and get JWT access token
 router.post('/login', authController.login);
 
-
 module.exports = router;

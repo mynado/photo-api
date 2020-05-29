@@ -7,7 +7,6 @@ const router = express.Router();
 const { createRules, addPhotosRules, updateRules } = require('../validation_rules/album')
 const albumController = require('../controller/album_controller');
 
-
 /* Get all resources */
 router.get('/', albumController.index);
 
