@@ -115,15 +115,17 @@ const addPhoto = async (req, res) => {
 
 	try {
 
-		const album = await models.Album.fetchById(req.params.albumId);
+		const album = await new models.Album({ id: req.params.albumId, user_id: req.user.data.id }).fetch({ withRelated: 'photos', require: false });
 
-		if (album.attributes.user_id !== req.user.data.id) {
+		// check if album exists
+		if (!album) {
 			res.status(404).send({
 				status: 'fail',
-				message: `The album with id ${req.params.albumId} does not exist.`
-			})
+				message: `The album with id ${req.params.albumId} does not exist.`,
+			});
 			return;
 		}
+
 		// attach photo to album
 		const result = await album.photos().attach(photosIds);
 
