@@ -85,17 +85,16 @@ const store = async (req, res) => {
 		});
 		throw error;
 	}
-
 }
 
 /**
  * Add a photo to album
  * POST /:albumId/photos
  */
-
 const addPhoto = async (req, res) => {
 
 	const errors = validationResult(req);
+
 	if (!errors.isEmpty()) {
 		// fail
 		res.status(422).send({
@@ -105,15 +104,22 @@ const addPhoto = async (req, res) => {
 		return;
 	}
 
-	try {
-		// get photo and album to attach
-		const photo = await models.Photo.fetchById(req.body.photo_id);
-		console.log(photo)
+	// extract valid data
+	const validData = matchedData(req);
 
+	// extract photos
+	let photosIds = false;
+	if (validData.photos_ids) {
+		photosIds = validData.photos_ids;
+		delete validData.photos_ids;
+	}
+	console.log(photosIds)
+	try {
+		// get album to attach
 		const album = await models.Album.fetchById(req.params.albumId);
 
 		// attach photo to album
-		const result = await album.photos().attach(photo);
+		const result = await album.photos().attach(photosIds);
 
 		console.log(result);
 		res.status(201).send({
@@ -130,7 +136,6 @@ const addPhoto = async (req, res) => {
 		throw error;
 	}
 }
-
 
 /**
  * Update a specific resource

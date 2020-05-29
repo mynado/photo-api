@@ -21,8 +21,21 @@ const createRules = [
 ];
 
 const addPhotosRules = [
-	body('photo_id').trim().isLength({ min: 1 }),
-	//body('album_id').trim().isLength({ min: 1 }),
+	body('photos_ids').isArray().custom(async (values) => {
+		// validate that every element is a number
+		if (!values.every(Number.isInteger)) {
+			return Promise.reject('Invalid value in array.')
+		}
+
+	// validate that every value exists in database
+		for (let i = 0; i < values.length; i++) {
+			const photo = await models.Photo.fetchById(values[i]);
+
+			if (!photo) {
+				return Promise.reject(`Category ${values[i]} does not exist.`)
+			}
+		}
+	}),
 ];
 
 const updateRules = [
