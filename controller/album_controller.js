@@ -211,7 +211,7 @@ const removePhoto = async (req, res) => {
 	}
 
 	// get album
-	const album = await new models.Album({ id: req.params.albumId }).fetch({ withRelated: 'photos' });
+	const album = await new models.Album({ id: req.params.albumId, user_id: req.user.data.id }).fetch({ withRelated: 'photos', require: false });
 
 	// check if album exists
 	if (!album) {
