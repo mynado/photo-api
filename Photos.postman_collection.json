@@ -1,0 +1,2003 @@
+{
+	"info": {
+		"_postman_id": "11eed31e-a6a3-4a0a-beb5-423ae73db1f7",
+		"name": "Photos",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Heroku",
+			"item": [
+				{
+					"name": "Photos",
+					"item": [
+						{
+							"name": "Audre",
+							"item": [
+								{
+									"name": "GET /photos",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{audre_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET /photos/:photoId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{mercury_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos/51",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos",
+												"51"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "POST /photos",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{audre_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"title\": \"Look into camera\",\n\t\"url\": \"https://www.thoughtco.com/thmb/qQbbuVt7SSTUnn5p9Rd78x2ygX4=/1872x1404/smart/filters:no_upscale()/GettyImages-694880169x-58bd8eda5f9b58af5cd1923a.jpg\",\n\t\"comment\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "PUT /photos/:photoId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{audre_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"url\": \"https://images-na.ssl-images-amazon.com/images/I/81RH1-h7qWL.jpg\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos/121",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos",
+												"121"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DELETE /photos/:photoId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{audre_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos/23",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos",
+												"23"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Goku",
+							"item": [
+								{
+									"name": "GET /photos",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{goku_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos/",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "POST /photos",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{goku_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"title\": \"hej hej\",\n\t\"url\": \"https://images.unsplash.com/photo-1590559899731-a382839e5549?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=934&q=80\",\n\t\"comment\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "PUT /photos/:photoId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{goku_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"title\": \"titel\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos/23",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos",
+												"23"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DELETE /photos/:photoId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{goku_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos/81",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos",
+												"81"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Mercury",
+							"item": [
+								{
+									"name": "GET /photos",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{mercury_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET /photos/:photoId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{mercury_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos/51",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos",
+												"51"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "POST /photos",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{mercury_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"title\": \"Artistic\",\n\t\"url\": \"https://i.pinimg.com/originals/18/2e/7f/182e7ffba3eff5b1a71b1e34bf878331.jpg\",\n\t\"comment\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "PUT /photos/:photoId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{mercury_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"comment\": \"art from pinterest\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos/51",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos",
+												"51"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DELETE /photos/:photoId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{mercury_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos/51",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos",
+												"51"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "MyNa",
+							"item": [
+								{
+									"name": "GET /photos",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{myna_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos/",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "PUT /photos/:photoId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{myna_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"title\": \"Chinese breakfast\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos/28",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos",
+												"28"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DELETE /photos/:photoId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{myna_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos/28",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos",
+												"28"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "POST /photos",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{myna_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"title\": \"Best breakfast\",\n\t\"url\": \"https://cookingtheglobe.com/wp-content/uploads/2016/07/chinese-breakfast-2.jpg\",\n\t\"comment\": \"\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/photos/",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"photos",
+												""
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Albums",
+					"item": [
+						{
+							"name": "Audre",
+							"item": [
+								{
+									"name": "GET /albums/",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{audre_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET /albums:/albumId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{audre_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/61",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"61"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "POST /albums/",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{audre_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"title\": \"Press Photos\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "POST /albums/:albumId/photos",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{audre_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"photos_ids\": [141, 151]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/71/photos",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"71",
+												"photos"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "PUT /albums/:albumId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{goku_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"title\": \"amazing album\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/3",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DELETE /albums/:albumId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{audre_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/3",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DELETE /albums/:albumId/photo/:photoId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{audre_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/61/photo/141",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"61",
+												"photo",
+												"141"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Goku",
+							"item": [
+								{
+									"name": "GET /albums/",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{goku_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET /albums:/albumId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{goku_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/41",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"41"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "POST /albums/",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{goku_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"title\": \"Food\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "POST /albums/:albumId/photos",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{audre_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"photos_ids\": [141]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/61/photos",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"61",
+												"photos"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "PUT /albums/:albumId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{goku_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"title\": \"amazing album\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/3",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"3"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DELETE /albums/:albumId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{goku_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/51",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"51"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DELETE /albums/:albumId/photo/:photoId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{goku_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/4/photo/24",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"4",
+												"photo",
+												"24"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "Mercury",
+							"item": [
+								{
+									"name": "GET /albums",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{mercury_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET /albums/:albumId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{mercury_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/11",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"11"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "POST /albums/",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{mercury_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"title\": \"delete this album\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "POST /albums/:albumId/photos",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{mercury_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"photos_ids\": [31, 41, 61]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/11/photos/",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"11",
+												"photos",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "PUT /albums/:albumId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{mercury_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"title\": \"Selfies\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/11",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"11"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DELETE /albums/:albumId/photo/:photoId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{mercury_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/7/photo/61",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"7",
+												"photo",
+												"61"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DELETE /albums/:albumId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{mercury_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/22",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"22"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						},
+						{
+							"name": "MyNa",
+							"item": [
+								{
+									"name": "GET /albums",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{myna_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "GET /albums/:albumId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{myna_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "GET",
+										"header": [],
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/6",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"6"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "POST /albums/",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{myna_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"title\": \"Vietnamese Food\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												""
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "POST /albums/:albumId/photos",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{goku_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "POST",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"photos_ids\": [30]\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/3/photos",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"3",
+												"photos"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "PUT /albums/:albumId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{myna_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "PUT",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "{\n\t\"title\": \"Amazing Vietnamese Food\"\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/6",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"6"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DELETE /albums/:albumId/photo/:photoId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{myna_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/6/photo/26",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"6",
+												"photo",
+												"26"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "DELETE /albums/:albumId",
+									"request": {
+										"auth": {
+											"type": "bearer",
+											"bearer": [
+												{
+													"key": "token",
+													"value": "{{myna_access_token}}",
+													"type": "string"
+												}
+											]
+										},
+										"method": "DELETE",
+										"header": [],
+										"body": {
+											"mode": "raw",
+											"raw": "",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "https://protected-mountain-10101.herokuapp.com/albums/6",
+											"protocol": "https",
+											"host": [
+												"protected-mountain-10101",
+												"herokuapp",
+												"com"
+											],
+											"path": [
+												"albums",
+												"6"
+											]
+										}
+									},
+									"response": []
+								}
+							],
+							"protocolProfileBehavior": {},
+							"_postman_isSubFolder": true
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "Auth",
+					"item": [
+						{
+							"name": "POST /register",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"audre@lordeuniversity.com\",\n\t\"password\": \"sisteroutsider\",\n\t\"first_name\": \"Audre\",\n\t\"last_name\": \"Lorde\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://protected-mountain-10101.herokuapp.com/register",
+									"protocol": "https",
+									"host": [
+										"protected-mountain-10101",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"register"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST /login (goku)",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"goku@dragonball.inc\",\n\t\"password\": \"foodfood\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://protected-mountain-10101.herokuapp.com/login",
+									"protocol": "https",
+									"host": [
+										"protected-mountain-10101",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST /login (mercury)",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"mercury@sailor-moon.com\",\n\t\"password\": \"darkprincess\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://protected-mountain-10101.herokuapp.com/login",
+									"protocol": "https",
+									"host": [
+										"protected-mountain-10101",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST /login (myna.do)",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"myna.do@mahoyo.com\",\n\t\"password\": \"flamingoblomma\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://protected-mountain-10101.herokuapp.com/login",
+									"protocol": "https",
+									"host": [
+										"protected-mountain-10101",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "POST /login (audre)",
+							"request": {
+								"auth": {
+									"type": "noauth"
+								},
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"email\": \"audre@lordeuniversity.com\",\n\t\"password\": \"sisteroutsider\"\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "https://protected-mountain-10101.herokuapp.com/login",
+									"protocol": "https",
+									"host": [
+										"protected-mountain-10101",
+										"herokuapp",
+										"com"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"response": []
+						}
+					],
+					"protocolProfileBehavior": {},
+					"_postman_isSubFolder": true
+				},
+				{
+					"name": "GET /",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{myna_access_token}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "https://protected-mountain-10101.herokuapp.com/",
+							"protocol": "https",
+							"host": [
+								"protected-mountain-10101",
+								"herokuapp",
+								"com"
+							],
+							"path": [
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
