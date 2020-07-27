@@ -27,11 +27,11 @@ const index = async (req, res) => {
  */
 const show = async (req, res) => {
 	// query db for album and load the photos relation
+	console.log(req)
 	let album = null;
 	try {
-		album = await models.Album.fetchById(req.params.albumId, { withRelated: 'photos' });
+		album = await new models.Album({ id: req.params.albumId }).where('user_id', req.user.data.id).fetch({ withRelated: 'photos' })
 	} catch (error) {
-
 		res.sendStatus(404);
 		return;
 	}
