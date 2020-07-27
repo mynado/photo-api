@@ -27,22 +27,21 @@ const index = async (req, res) => {
  */
 const show = async (req, res) => {
 	// query db for album and load the photos relation
-	console.log(req)
 	let album = null;
 	try {
 		album = await new models.Album({ id: req.params.albumId }).where('user_id', req.user.data.id).fetch({ withRelated: 'photos' })
 	} catch (error) {
-		res.sendStatus(404);
+		res.status(404).send({
+			status: 'fail',
+			data: `Sorry, could not find the album with id: ${req.params.albumId} for this user`,
+		});
 		return;
 	}
-
-	// query db for photos this user has
-	const photos = album.related('photos');
 
 	res.send({
 		status: 'success',
 		data: {
-			photos,
+			album,
 		},
 	});
 }
